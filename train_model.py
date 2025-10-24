@@ -8,12 +8,13 @@ from sklearn.model_selection import KFold
 import numpy as np
 
 # ===========================
-# 🧩 CONFIGURATION
+#  CONFIGURATION
 # ===========================
 DATA_DIR = "out"
 BATCH_SIZE = 32
-EPOCHS = 50
+EPOCHS = 25
 NUM_FOLDS = 5
+#LEARNING_RATES = [1e-4, 3e-4, 1e-3]
 LEARNING_RATES = [1e-4, 3e-4, 1e-3, 3e-3, 1e-2]
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 BEST_MODEL_PATH = "best_model.pth"
@@ -109,7 +110,7 @@ def train_one_fold(model, train_loader, val_loader, optimizer, criterion, lr, fo
                 val_total += labels.size(0)
         val_acc = val_correct / val_total
 
-        if epoch % 10 == 0 or epoch == EPOCHS - 1:
+        if epoch % 1 == 0 or epoch == EPOCHS - 1:
             print(f"[LR={lr:.0e}] Fold {fold} | Epoch {epoch+1}/{EPOCHS} | Train Acc: {train_acc:.3f} | Val Acc: {val_acc:.3f}")
 
     return val_acc
