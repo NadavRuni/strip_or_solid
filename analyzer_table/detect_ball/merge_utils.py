@@ -19,7 +19,13 @@ def mergeData(main_photo: PhotoData, sub_photos: list[PhotoData], black_and_whit
     merged_balls = [Ball(center=b.center, radius=b.radius) for b in main_photo.balls]
     Debugger.log(f"Initialized with {len(merged_balls)} balls from main image")
 
+    # === שלב 2: חישוב גבולות השולחן לפי המלבן ===
+    min_x = min(table_rectangle.top_left[0], table_rectangle.bottom_left[0])
+    max_x = max(table_rectangle.top_right[0], table_rectangle.bottom_right[0])
+    min_y = min(table_rectangle.top_left[1], table_rectangle.top_right[1])
+    max_y = max(table_rectangle.bottom_left[1], table_rectangle.bottom_right[1])
 
+        
     
     # === שלב 3: איחוד כל הכדורים משאר התמונות ===
     added, skipped, duplicates = 0, 0, 0

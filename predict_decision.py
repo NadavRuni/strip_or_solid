@@ -32,7 +32,7 @@ print("✅ Model loaded successfully")
 # ===========================
 images = [f for f in os.listdir(DECIDE_DIR) if f.lower().endswith((".jpg", ".jpeg", ".png"))]
 if not images:
-    print("❌ לא נמצאו תמונות בתיקיית decide")
+    print("❌ no pictures available in 'decide' folder. Please add an image and try again.")
     exit()
 
 image_path = os.path.join(DECIDE_DIR, images[0])
