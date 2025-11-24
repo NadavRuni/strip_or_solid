@@ -5,8 +5,9 @@ from .Debugger import Debugger
 import os
 from analyzer_table.launcher_helper.json_models import PhotoData, Origin, Rectangle, Ball  # ✅ נוספו המחלקות החדשות
 
-MIN_BALL_RADIUS = 9
-MAX_BALL_RADIUS = 21
+MIN_BALL_RADIUS = 85
+MAX_BALL_RADIUS = 90
+
 
 def detect_balls_opencv(input_dir, output_dir, parts_info, full_w, full_h):
     Debugger.log("Starting OpenCV detection (with radius filtering)")

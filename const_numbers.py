@@ -2,7 +2,7 @@ import math
 from pathlib import Path
 
 BALL_RADIUS = 3
-BALL_RADIUS_PHOTO = 20  
+BALL_RADIUS_PHOTO = 25  
 POCKET_MARGIN=60
 WALL_MARGIN=100
 
