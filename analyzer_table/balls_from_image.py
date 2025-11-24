@@ -15,7 +15,12 @@ from analyzer_table.launcher_helper.pocket.pocket_cycle import mark_pocket_circl
 
 
 
-
+def insert_black_and_white_balls(balls: List[Ball], black_ball: Ball, white_ball: Ball) :
+    for ball in balls:
+        if ball.center == black_ball.center :
+            ball.final_color = "black"
+        elif ball.center == white_ball.center :
+            ball.final_color = "white"
 
 def analyze_ball_brightness(image_path: str, balls: List[Ball], output_dir: str = "out/balls") -> Tuple[Optional[Ball], Optional[Ball]]:
     """
@@ -134,17 +139,8 @@ def full_analyzer_pipeline(image_path: str) -> AnalyzerResult:
 
     # שלב 5: זיהוי הכדור הלבן והשחור
     white_ball ,black_ball =analyze_ball_brightness(image_path, sorted_balls, os.path.join(out_dir, "balls"))
-
-
-    if white_ball:
-        Debugger.log(f"⚪ White ball found at {white_ball.center}")
-    else:
-        Debugger.warn("⚪ White ball not found")
-
-    if black_ball:
-        Debugger.log(f"⚫ Black ball found at {black_ball.center}")
-    else:
-        Debugger.warn("⚫ Black ball not found")
+     
+    insert_black_and_white_balls(sorted_balls, black_ball, white_ball)
     
     analyzerResult = AnalyzerResult(
         Pockets=all_pocket,
